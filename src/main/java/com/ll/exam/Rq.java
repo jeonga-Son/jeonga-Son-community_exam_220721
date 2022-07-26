@@ -1,6 +1,5 @@
 package com.ll.exam;
 
-import com.ll.exam.article.dto.ArticleDto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 public class Rq {
     private final HttpServletRequest req;
@@ -25,6 +23,15 @@ public class Rq {
         }
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
+    }
+
+    public String getParam(String paramName, String defaultValue) {
+        String value = req.getParameter(paramName);
+
+        if(value == null ||  value.trim().length() == 0) {
+            return  defaultValue;
+        }
+        return value;
     }
 
     public int getIntParam(String paramName, int defaultValue) {
@@ -62,5 +69,13 @@ public class Rq {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getPath() {
+        return req.getRequestURI();
+    }
+
+    public String getMethod() {
+        return req.getMethod();
     }
 }

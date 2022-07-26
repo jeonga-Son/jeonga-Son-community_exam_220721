@@ -23,7 +23,7 @@
     }
 </script>
 
-<form onsubmit="ArticleSave__submitForm(this); return false;">
+<form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
    <div>
         <span>제목</span>
         <div>
