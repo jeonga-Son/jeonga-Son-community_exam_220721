@@ -16,7 +16,6 @@ public class ArticleController {
     public void showList(Rq rq) {
         List<ArticleDto> articleDtos = articleService.findAll();
 
-
         rq.setAttr("articles", articleDtos);
         rq.view("usr/article/list");
     }
@@ -33,5 +32,14 @@ public class ArticleController {
         long id = articleService.write(title, body);
 
         rq.appendBody("%d번 게시물이 생성 되었습니다.".formatted(id));
+    }
+
+    public void showDetail(Rq rq) {
+        long id = 1;
+
+        ArticleDto articleDto = articleService.findById(id);
+
+        rq.setAttr("article", articleDto);
+        rq.view("usr/article/detail");
     }
 }

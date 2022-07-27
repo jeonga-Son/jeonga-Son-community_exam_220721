@@ -19,11 +19,13 @@ public class DispatchServlet extends HttpServlet {
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
 
-        System.out.println(rq.getActionPath());
-
         switch (rq.getMethod()) {
             case "GET":
                 switch (rq.getActionPath()) {
+                    case "/usr/article/detail":
+                        articleController.showDetail(rq);
+                        break;
+
                     case "/usr/article/list":
                         articleController.showList(rq);
                         break;
