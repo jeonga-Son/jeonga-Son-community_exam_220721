@@ -70,6 +70,7 @@ public class ArticleController {
 
         articleService.delete(id);
 
-        rq.appendBody("%d번 게시물이 삭제되었습니다.".formatted(id));
+        rq.appendBody("<div>%d번 게시물이 삭제되었습니다.</div>".formatted(id));
+        rq.appendBody("<div><a href=\"http://localhost:8081/usr/article/list/free\">리스트로 이동</div>".formatted(id));
     }
 }
