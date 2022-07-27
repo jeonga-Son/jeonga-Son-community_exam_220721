@@ -56,6 +56,6 @@ function ArticleSave__submitForm(form) {
             </div>
         </form>
     </div>
-</div>
+</section>
 
 <%@ include file="../common/foot.jspf"%>
